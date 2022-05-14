@@ -1,0 +1,26 @@
+.show-in-mobile {
+  display: none !important;  // avoid using important at other places but here it was necessary to do so
+  @include mobile {
+    display: block !important;
+  }
+}
+
+.hide-in-mobile {
+  display: block !important; 
+  @include mobile {
+    display: none !important;
+  }
+}
+
+.flex-row {
+  display: flex;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.hide-content {
+  display: none;
+}
