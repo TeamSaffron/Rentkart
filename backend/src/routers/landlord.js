@@ -1,6 +1,6 @@
-const express = require('express')
-const Landlord = require('../models/landlord')
-const router = new express.Router()
+import { Router } from 'express'
+import Landlord from '../models/landlord'
+const router = new Router()
 
 router.post('/landlords', async (req, res) => {
     const landlord = new Landlord(req.body)
@@ -74,4 +74,4 @@ router.post('/landlords', async (req, res) => {
 //     }
 // })
 
-module.exports = router
+export default router

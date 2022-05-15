@@ -1,22 +1,49 @@
-import express, { json } from 'express';
-import './db/mongoose';
-import User from './models/user';
-import Room from './models/room';
+import express, { Router, json } from 'express';
+import Room from "./models/room.js";
+import './db/mongoose.js';
+//import Rooms from './models/room.js';
 
 const app = express()
 const port = process.env.PORT || 3001
 
+
 app.use(json())
 
-app.post('/user', (req, res) => {
-    const landlord = new User(req.body)
+  // api for filtering rooms
+  app.get('/room',async(req,res)=>{
+    try{
+        let obj = {}
+        if(req.query.rental_price){
+            obj.rental_price=req.query.rental_price
+        }
+        if(req.query.city){
+            obj.city=req.query.city
+        }
+        if(req.query.total_bhk){
+            obj.total_bhk=req.query.total_bhk
+        }
+        if(req.query.furnished){
+            obj.furnished=req.query.furnished
+        }
+        const room =await Room.find(obj)
+        if(!room){
+            throw new Error()
+        }
+        res.send(room)
+    } catch(e){
+        res.status(404).send()
+    }
+  })
 
-    landlord.save().then(() => {
-        res.status(201).send(landlord)
-    }).catch((e) => {
-        res.status(400).send(e)
-    })
-})
+// app.post('/user', (req, res) => {
+//     const landlord = new User(req.body)
+
+//     landlord.save().then(() => {
+//         res.status(201).send(landlord)
+//     }).catch((e) => {
+//         res.status(400).send(e)
+//     })
+// })
 
 // app.post('/Tenants', (req, res) => {
 //     const tenant = new User(req.body)

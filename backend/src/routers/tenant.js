@@ -1,26 +1,26 @@
-const express = require('express')
-const Tenant = require('../models/tenant')
-const router = new express.Router()
+import { Router } from 'express'
+// import Tenant, { find } from '../models/tenant'
+const router = new Router()
 
-router.post('/Tenants', async (req, res) => {
-    const tenant = new Tenant(req.body)
+// router.post('/Tenants', async (req, res) => {
+//     const tenant = new Tenant(req.body)
 
-    try {
-        await tenant.save()
-        res.status(201).send(tenant)
-    } catch (e) {
-        res.status(400).send(e)
-    }
-})
+//     try {
+//         await tenant.save()
+//         res.status(201).send(tenant)
+//     } catch (e) {
+//         res.status(400).send(e)
+//     }
+// })
 
-router.get('/tenants', async (req, res) => {
-    try {
-        const tenants = await Tenant.find({})
-        res.send(tenants)
-    } catch (e) {
-        res.status(500).send()
-    }
-})
+// router.get('/tenants', async (req, res) => {
+//     try {
+//         const tenants = await find({})
+//         res.send(tenants)
+//     } catch (e) {
+//         res.status(500).send()
+//     }
+// })
 
 // router.get('/tenants/:id', async (req, res) => {
 //     const _id = req.params.id
@@ -74,4 +74,4 @@ router.get('/tenants', async (req, res) => {
 //     }
 // })
 
-module.exports = router
+export default router
