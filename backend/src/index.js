@@ -34,6 +34,34 @@ app.post("/users/login", async (req, res) => {
     res.status(400).send(e);
   }
 });
+  // api for filtering rooms
+  app.get('/room',async(req,res)=>{
+    try{
+        let obj = {}
+        if(req.query.rental_price){
+            obj.rental_price=req.query.rental_price
+        }
+        if(req.query.city){
+            obj.city=req.query.city
+        }
+        if(req.query.total_bhk){
+            obj.total_bhk=req.query.total_bhk
+        }
+        if(req.query.furnished){
+            obj.furnished=req.query.furnished
+        }
+        const room =await Room.find(obj)
+        if(!room){
+            throw new Error()
+        }
+        res.send(room)
+    } catch(e){
+        res.status(404).send()
+    }
+  })
+
+// app.post('/user', (req, res) => {
+//     const landlord = new User(req.body)
 
 app.post("/users/logout", auth, async (req, res) => {
   try {
