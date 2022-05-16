@@ -60,6 +60,67 @@ app.post("/users/login", async (req, res) => {
     }
   })
 
+const router = new Router();
+
+app.post('/user', async(req, res) => {
+  const user = new User(req.body);
+  try {
+    await user.save();
+    res.status(201).send({
+        success: true,
+        user: user,
+        error: null,
+      });
+  } catch(error) {
+    res.status(404).send({
+      success: false,
+      error: error.message,
+    })
+  }
+})
+
+
+app.post('/create-room', async(req, res) => {
+  const room = new Room(req.body);
+  try {
+    await room.save();
+    res.status(201).send({
+        success: true,
+        room: room,
+        error: null,
+      });
+  } catch(error) {
+    res.status(404).send({
+      success: false,
+      error: error.message,
+    })
+  }
+})
+
+app.patch('/update-room/:id', async (req, res) => {
+  try {
+    const _id = req.params.id;
+
+    const room = await Room.findByIdAndUpdate(_id, req.body, { new: true, runValidators:true })
+    if(!room) {
+      return res.status(404).send({
+        success: false,
+        error: "No such room found",
+      })
+    }
+    return res.status(201).send({
+      success: true,
+      room: room,
+      error: null,
+    });
+  } catch(error) {
+    res.status(404).send({
+      success: false,
+      error: error.message || "Updation failed",
+    })
+  }
+})
+
 // app.post('/user', (req, res) => {
 //     const landlord = new User(req.body)
 

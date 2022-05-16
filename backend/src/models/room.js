@@ -20,6 +20,7 @@ const RoomSchema = new Schema({
   room_photos: [{ data: Buffer, contentType: String}],
   furnished: { type: String, required: true },
   security_deposit: { type: String },
+  landlord_contact_no:  {type: Number, required: true },
 })
 
 const Room = model('Room', RoomSchema);

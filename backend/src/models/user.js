@@ -44,6 +44,7 @@ const userSchema = new Schema({
   phone_number: { type: String },
   thumbnail: { data: Buffer, contentType: String },
   posted_room_ids: [ { type: String } ],
+  room_applicant_ids: [ { } ],
   interested_room_ids: [ { type: String } ],
 })
 
