@@ -1,14 +1,18 @@
+import { Provider } from 'react-redux';
+
+import store from './redux/store';
+import MainRoutes from './routes';
 import './styles/index.scss';
-import Rentkart from './component/Rentkart';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <Rentkart />
-      </header>
-    </div>
+    <Provider store={store}>
+      <div className="App">
+        <MainRoutes />
+      </div>
+    </Provider>
   );
 }
 
 export default App;
+

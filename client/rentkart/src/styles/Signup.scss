@@ -1,0 +1,58 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.container{
+    background: linear-gradient(135deg ,red,white);
+    width: 100%;
+    min-height:100vh ;
+    display:flex ;
+    justify-content: center;
+    align-items: center;
+}
+
+.bodysignup
+{
+
+    background-color: white;
+    min-width: 150px;
+    height: 380px;
+    padding:30px;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.title{
+
+    color:red;
+    text-align: center;
+    margin: px 10px 10px 10px;
+}
+
+.name-wrapper,
+.email-wrapper,
+.password-wrapper{
+margin:5px;
+color:black;
+font-size: 14px;
+
+
+}
+
+.input{
+height:25px;
+font-size: 15px ;
+width:100%;
+border-bottom-style:2px solid black ;
+margin-bottom:10px;
+}
+.button-wrapper{
+display: flex;
+font-size: 20px;
+border-radius: 15px;
+color: blue;
+padding: 10px 60px;
+margin:auto;
+cursor: pointer;
+}
