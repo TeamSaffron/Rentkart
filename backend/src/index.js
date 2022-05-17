@@ -11,7 +11,7 @@ const port = process.env.PORT || 3001
 app.use(json())
 
   // api for filtering rooms
-  app.get('/room',async(req,res)=>{
+  app.get('/get-rooms',async(req,res)=>{
     try{
       let { page, size, sort } = req.query;
         let obj = {}
@@ -58,7 +58,7 @@ app.post('/user', async(req, res) => {
         user: user,
         error: null,
       });
-  } catch(error) {
+  }catch(error) {
     res.status(404).send({
       success: false,
       error: error.message,

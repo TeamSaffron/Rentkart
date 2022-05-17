@@ -1,7 +1,9 @@
 import Mongoose from 'mongoose'
 const { connect } = Mongoose;
+import dotenv from 'dotenv'
+dotenv.config()
 
-connect('mongodb://127.0.0.1:27017/rentkart', {
+connect(process.env.DB, {
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true
