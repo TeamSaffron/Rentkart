@@ -26,7 +26,7 @@ export default function Rentkart() {
           <li>
             <a
               className="navbar-link"
-              href="#"
+              href="landlord"
               target="_blank"
               >
                 <img src={HouseLogo} alt="logo" />
